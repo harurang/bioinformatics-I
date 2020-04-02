@@ -12,7 +12,7 @@ def getKmerIfExists(index, charc):
     pattern = possibleKmer + text[i]
     if len(pattern) < k and text.count(pattern) > 1:
       possibleKmer += text[i]
-    elif len(pattern) == k:      
+    elif len(pattern) == k:
       return pattern
     else:
       break
@@ -28,19 +28,19 @@ def getKMers():
   return kmers
 
 # For all kmers, find the most frequent and return them.
-def getMostFrequentKmers(): 
+def getMostFrequentKmers():
   kmers = getKMers()
   mostFrequentKmers = []
   highestCount = 0
-  print(getKMers())
   for i in range(0, len(kmers)):
     if (text.count(kmers[i]) >= highestCount):
       highestCount = text.count(kmers[i])
+      # If there are kmers and the first kmer has a lower count than highest count,
+      # replace it
       if (len(mostFrequentKmers) and text.count(mostFrequentKmers[0]) < highestCount):
         mostFrequentKmers = [kmers[i]]
       elif kmers[i] not in mostFrequentKmers:
         mostFrequentKmers.append(kmers[i])
-
+  return mostFrequentKmers
 
 print(getMostFrequentKmers())
-  
